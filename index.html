@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -28,7 +28,7 @@
       }
       html {
         scroll-behavior: smooth;
-        scroll-padding-top: 2.6rem;
+        scroll-padding-top: 3.5rem;
       }
       body {
         min-height: 100vh;
@@ -55,7 +55,7 @@
         color: inherit;
       }
       section[id] {
-        scroll-margin-top: 2.6rem;
+        scroll-margin-top: 3.5rem;
       }
       /* Header and navigation */
       .site-header {
@@ -63,23 +63,24 @@
         top: 0;
         left: 0;
         right: 0;
-        z-index: 5;
+        z-index: 1000;
         display: flex;
         align-items: center;
         width: 100%;
-        min-height: 5.25rem;
-        padding: 0 max(1rem, calc((100% - 1220px) / 2));
-        border-bottom: 1px solid transparent;
-        background: rgba(255, 255, 255, 0.94);
-        box-shadow: none;
-        backdrop-filter: blur(12px);
+        min-height: 4.5rem;
+        padding: 0 max(1.25rem, calc((100% - 1220px) / 2));
+        border-bottom: 1px solid rgba(16, 25, 42, 0.08);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
         color: var(--ink);
+        box-shadow: 0 4px 20px rgba(16, 25, 42, 0.04);
         transition:
           border-color 0.2s ease,
           box-shadow 0.2s ease;
       }
       .site-header.scrolled {
-        border-bottom-color: rgba(16, 25, 42, 0.08);
+        border-bottom-color: rgba(16, 25, 42, 0.1);
         box-shadow: 0 12px 24px rgba(16, 25, 42, 0.08);
       }
       .brand {
@@ -205,7 +206,9 @@
       .mobile-menu-backdrop {
         position: absolute;
         inset: 0;
-        background: rgba(16, 25, 42, 0.34);
+        background: rgba(16, 25, 42, 0.28);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
         opacity: 0;
         transition: opacity 0.25s ease;
       }
@@ -216,64 +219,79 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: min(82vw, 17rem);
-        height: 100%;
-        padding: 1.15rem 0.75rem;
+        right: 0;
+        width: 100%;
+        margin: 0;
+        height: auto;
+        padding: 1.1rem 1.25rem 1.35rem;
+        border-radius: 0 0 1.5rem 1.5rem;
         background: rgba(255, 255, 255, 0.98);
-        box-shadow: 24px 0 48px rgba(16, 25, 42, 0.16);
-        transform: translateX(-100%);
-        transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 20px 40px rgba(16, 25, 42, 0.16);
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
         display: flex;
         flex-direction: column;
       }
       .mobile-menu.open .mobile-menu-panel {
-        transform: translateX(0);
+        transform: translateY(0);
+        opacity: 1;
       }
       .mobile-menu-head {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 1rem;
-        padding-left: 0.25rem;
+        margin-bottom: 0.65rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(16, 25, 42, 0.07);
       }
       .mobile-menu-title {
         font-family: "Cormorant Garamond", Georgia, serif;
         color: var(--ink);
-        font-size: 1.45rem;
+        font-size: 1.35rem;
         font-weight: 700;
+        letter-spacing: -0.01em;
       }
       .menu-close {
         display: grid;
         place-items: center;
-        width: 2.45rem;
-        height: 2.45rem;
+        width: 2.1rem;
+        height: 2.1rem;
         border: 0;
         border-radius: 50%;
         background: #f6efe4;
         color: var(--gold-deep);
         cursor: pointer;
+        transition: transform 0.18s ease, background 0.18s ease;
+      }
+      .menu-close:hover {
+        transform: scale(1.08);
+        background: #ebdcb7;
       }
       .menu-close svg {
-        width: 1.05rem !important;
-        height: 1.05rem !important;
+        width: 1rem !important;
+        height: 1rem !important;
       }
       .mobile-nav {
         display: grid;
-        gap: 0.35rem;
+        gap: 0.25rem;
       }
       .mobile-nav a {
         display: flex;
         align-items: center;
-        min-height: 2.75rem;
-        padding: 0 0.85rem;
-        border-radius: 0.45rem;
+        justify-content: space-between;
+        min-height: 2.45rem;
+        padding: 0 0.9rem;
+        border-radius: 0.6rem;
         color: #344052;
         text-decoration: none;
-        font-size: 0.92rem;
-        font-weight: 800;
-        transition:
-          background 0.2s ease,
-          color 0.2s ease;
+        font-size: 0.9rem;
+        font-weight: 700;
+        background: rgba(248, 250, 249, 0.8);
+        transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
       }
       .mobile-nav a:hover,
       .mobile-nav a.active {
@@ -284,7 +302,7 @@
       .intro-loader {
         position: fixed;
         inset: 0;
-        z-index: 100;
+        z-index: 99999;
         display: grid;
         place-items: center;
         background:
@@ -303,6 +321,19 @@
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
+      }
+      .site-header {
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      body.loaded .site-header {
+        opacity: 1;
+        visibility: visible;
       }
       .intro-loader::before {
         content: "";
@@ -390,7 +421,7 @@
         line-height: 0.95;
         font-weight: 600;
         color: #d5b474;
-        animation-delay: 0.45s;
+        animation-delay: 0.15s;
       }
       .intro-title span {
         display: block;
@@ -403,7 +434,7 @@
         font-size: 1.35rem;
         font-weight: 800;
         letter-spacing: 0.02em;
-        animation-delay: 0.72s;
+        animation-delay: 0.35s;
       }
       .intro-subtitle span {
         color: #d5b474;
@@ -416,7 +447,7 @@
         border-radius: 999px;
         background: rgba(255, 255, 255, 0.14);
         overflow: hidden;
-        animation-delay: 0.96s;
+        animation-delay: 0.5s;
       }
       .intro-bar::before {
         content: "";
@@ -425,7 +456,7 @@
         width: 0;
         border-radius: inherit;
         background: linear-gradient(90deg, #d5b474, #43e1d1);
-        animation: introLoad 2.05s ease 1.12s forwards;
+        animation: introLoad 1.2s ease 0.6s forwards;
       }
       .intro-line {
         display: flex;
@@ -433,7 +464,7 @@
         gap: 1.1rem;
         margin-top: 2.2rem;
         color: #d5b474;
-        animation-delay: 1.12s;
+        animation-delay: 0.6s;
       }
       .intro-line::before,
       .intro-line::after {
@@ -483,10 +514,7 @@
       /* Home */
       .home {
         position: relative;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        padding: 5.25rem 1rem 3.2rem;
+        padding: 6.5rem 1rem 3rem;
         background:
           radial-gradient(
             circle at 86% 75%,
@@ -741,12 +769,9 @@
         font-size: 0.78rem;
       }
       .scroll-cue {
-        position: absolute;
-        left: 50%;
-        bottom: 2.1rem;
-        transform: translateX(-50%);
+        margin: 0.5rem auto 0;
         color: #9aa4b5;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         text-align: center;
       }
       .scroll-cue span {
@@ -760,13 +785,12 @@
         animation: cueBounce 1.5s ease-in-out infinite;
       }
       /* Shared sections */
-      .about,
-      .experience,
-      .skills,
-      .portfolio,
-      .contact {
-        min-height: 100vh;
-        padding: 1.6rem 1rem 5rem;
+      section[id]:not(.home),
+      .standalone-creative {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 0 1.25rem 3.5rem;
       }
       /* About */
       .about {
@@ -786,11 +810,23 @@
       }
       .about-heading {
         width: min(100%, 820px);
-        margin: 0 auto 1.65rem;
+        margin: 0 auto 1.35rem;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
       .about-heading .pill {
+        margin-bottom: 0.5rem;
+      }
+      .about-heading h1,
+      .about-heading h2 {
         margin-bottom: 0;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: clamp(2.5rem, 5.5vw, 3.8rem);
+        line-height: 1.1;
+        color: var(--ink);
+        text-align: center;
       }
       .about-grid {
         display: grid;
@@ -851,15 +887,22 @@
         line-height: 1.35;
         font-weight: 500;
       }
-      .about h1 {
+      .about-copy {
+        padding-top: 0;
+        margin-top: 0;
+      }
+      .about h1,
+      .about-copy h2,
+      .about-copy h1 {
         max-width: 680px;
-        margin-bottom: 1.45rem;
+        margin-top: 0;
+        margin-bottom: 1.15rem;
         font-family: "Cormorant Garamond", Georgia, serif;
-        font-size: clamp(2.7rem, 5vw, 3.85rem);
-        line-height: 1.04;
-        font-weight: 600;
+        font-size: clamp(2rem, 3.5vw, 2.85rem);
+        line-height: 1.12;
+        font-weight: 500;
         color: var(--ink);
-        letter-spacing: 0;
+        letter-spacing: 0.01em;
       }
       .about-text {
         max-width: 680px;
@@ -892,9 +935,18 @@
         place-items: center;
         flex: 0 0 3.05rem;
         height: 3.05rem;
-        border-radius: 0.65rem;
+        border-radius: 0.75rem;
         background: var(--aqua-soft);
-        color: #169f94;
+        color: #149c91;
+      }
+      .info-icon svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
       }
       .info-label,
       .info-value {
@@ -935,21 +987,31 @@
       }
       .section-heading {
         width: min(100%, 820px);
-        margin: 0 auto 4rem;
+        margin: 0 auto 1.5rem;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .section-heading .pill {
+        margin-bottom: 0.5rem;
       }
       .section-heading h1,
       .section-heading h2 {
         margin-bottom: 0.9rem;
         font-family: "Cormorant Garamond", Georgia, serif;
-        font-size: clamp(2.9rem, 6vw, 4.2rem);
-        line-height: 1;
+        font-size: clamp(2.3rem, 5vw, 3.5rem);
+        line-height: 1.1;
+        font-weight: 500;
         color: var(--ink);
+        text-align: center;
+        letter-spacing: 0.01em;
       }
       .section-heading p {
         max-width: 710px;
         margin: 0 auto;
         color: #44546a;
+        text-align: center;
         font-size: 1.05rem;
         line-height: 1.6;
       }
@@ -1854,9 +1916,8 @@
         object-fit: cover;
       }
       .standalone-creative {
-        min-height: 100vh;
         margin-top: 0 !important;
-        padding: 1.6rem 1rem 5rem;
+        padding: 2.2rem 1rem 5rem;
         background:
           radial-gradient(
             circle at 16% 24%,
@@ -2293,16 +2354,72 @@
         }
       }
       /* Responsive adjustments */
-      @media (max-width: 980px) {
+      /* Comprehensive Responsive Design System across all screen sizes */
+      @media (min-width: 1440px) {
         .site-header {
-          min-height: 4.5rem;
+          padding-left: max(2rem, calc((100% - 1320px) / 2));
+          padding-right: max(2rem, calc((100% - 1320px) / 2));
         }
-        .brand {
-          font-size: 1.85rem;
+        .home-grid {
+          width: min(100%, 1380px);
+          grid-template-columns: minmax(0, 1.15fr) minmax(24rem, 0.85fr);
+          gap: 5rem;
+        }
+        .about-grid {
+          width: min(100%, 1320px);
+        }
+        .portfolio-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 1200px) {
+        .site-header {
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
         }
         .nav-links {
-          display: none;
+          gap: clamp(0.75rem, 1.5vw, 1.5rem);
+          font-size: 0.86rem;
         }
+        .hire-btn {
+          margin-left: 1.2rem;
+          padding: 0 1.25rem;
+          font-size: 0.88rem;
+        }
+        .home-grid {
+          grid-template-columns: minmax(0, 1fr) minmax(19rem, 0.88fr);
+          gap: clamp(2rem, 4vw, 4rem);
+        }
+        .about-grid {
+          grid-template-columns: minmax(18rem, 0.85fr) minmax(0, 1fr);
+          gap: clamp(2rem, 4vw, 4rem);
+        }
+        .photo-stage {
+          width: min(100%, 32rem);
+          min-height: 32rem;
+        }
+        .portrait-ring {
+          width: min(26rem, 78vw);
+        }
+        .float-card.top {
+          right: -0.5rem;
+        }
+        .float-card.bottom {
+          left: -0.5rem;
+        }
+      }
+
+      @media (max-width: 992px) {
+        section[id] {
+          scroll-margin-top: 4.5rem;
+        }
+        .site-header {
+          min-height: 4.5rem;
+          padding-left: 1.25rem;
+          padding-right: 1.25rem;
+        }
+        .nav-links,
         .site-header > .hire-btn {
           display: none;
         }
@@ -2311,1072 +2428,80 @@
           flex: 0 0 2.65rem;
           margin-left: auto;
         }
-        .home {
-          padding-top: 5.8rem;
-        }
-        .home-grid,
-        .about-grid,
-        .skills-layout,
-        .contact-layout {
-          grid-template-columns: 1fr;
-          text-align: center;
-        }
-        .home-copy {
-          padding-top: 0;
-        }
-        .lead,
-        .stats-row,
-        .about-text,
-        .info-row {
-          margin-left: auto;
-          margin-right: auto;
-        }
-        .home-actions {
-          justify-content: center;
-        }
-        .photo-stage {
-          width: min(100%, 30rem);
-          min-height: 29rem;
-          order: -1;
-        }
-        .scroll-cue {
-          display: none;
-        }
-        .about-media {
-          min-height: 35rem;
-          order: -1;
-          padding-top: 0;
-        }
-        .about-text {
-          text-align: left;
-        }
-        .timeline {
-          width: min(100%, 680px);
-        }
-        .timeline::before {
-          left: 0.55rem;
-        }
-        .timeline-item,
-        .timeline.show-all .extra-experience {
-          display: block;
-          padding-left: 2.2rem;
-          margin-bottom: 2rem;
-        }
-        .timeline-item:nth-child(even) .experience-card {
-          grid-column: auto;
-        }
-        .timeline-item:nth-child(odd) .card-head > div:first-child,
-        .timeline-item:nth-child(odd) .company {
-          text-align: left;
-        }
-        .timeline-item:nth-child(odd) .meta {
-          justify-content: flex-start;
-        }
-        .timeline-dot {
-          left: 0.55rem;
-        }
-        .experience-card {
-          min-height: 0;
-        }
-        .portfolio-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          max-width: 720px;
-        }
-        .video-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          max-width: 720px;
-        }
-        .contact-stack,
-        .contact-form {
-          width: min(100%, 680px);
-          margin: 0 auto;
-        }
-        .connect-card,
-        .contact-info-card {
-          text-align: left;
-        }
-      }
-      @media (max-width: 640px) {
-        .site-header {
-          padding-left: 0.85rem;
-          padding-right: 0.85rem;
-        }
-        .brand {
-          font-size: 1.1rem;
-        }
-        .hire-btn {
-          min-height: 2.35rem;
-          padding: 0 1rem;
-          font-size: 0.9rem;
-        }
-        .home,
-        .about,
-        .experience,
-        .skills,
-        .portfolio,
-        .contact {
-          padding-left: 0.85rem;
-          padding-right: 0.85rem;
-        }
-        .home .pill {
-          margin-bottom: 1.4rem;
-          padding: 0.55rem 1rem;
-        }
-        .home .pill svg {
-          flex-basis: 1rem;
-          width: 1rem;
-          height: 1rem;
-        }
-        .home h1 {
-          font-size: clamp(3rem, 16vw, 4rem);
-        }
-        .home-actions {
-          flex-direction: column;
-          margin-bottom: 2rem;
-        }
-        .btn {
-          width: 100%;
-        }
-        .stats-row,
-        .info-row,
-        .feature-grid,
-        .portfolio-grid,
-        .video-grid {
-          grid-template-columns: 1fr;
-        }
-        .photo-stage {
-          min-height: 24rem;
-        }
-        .portrait-ring {
-          width: min(22rem, 82vw);
-        }
-        .portrait-window {
-          width: calc(100% - 1.7rem);
-        }
-        .float-card {
-          min-width: 8rem;
-          padding: 0.65rem 0.75rem;
-        }
-        .about-media {
-          min-height: 27rem;
-        }
-        .about-photo-card {
-          width: min(24rem, 88vw);
-          min-height: 26rem;
-          border-width: 0.7rem;
-        }
-        .about-experience-card {
-          right: 0;
-          bottom: 0.9rem;
-          min-width: 9.4rem;
-          padding: 1rem 1.1rem;
-        }
-        .about h1 {
-          font-size: clamp(2.45rem, 12vw, 3.2rem);
-        }
-        .section-heading {
-          margin-bottom: 2.8rem;
-        }
-        .experience-card,
-        .education-card {
-          padding: 1.2rem;
-        }
-        .card-head,
-        .education-card {
-          grid-template-columns: 1fr;
-        }
-        .education-body h3 {
-          font-size: 1.25rem;
-        }
-        .description {
-          text-align: left;
-        }
-        .project-placeholder {
-          min-height: 11rem;
-        }
-        .connect-card,
-        .social-card,
-        .contact-form {
-          padding: 1.15rem;
-        }
-        .contact-info-card {
-          grid-template-columns: auto minmax(0, 1fr);
-          padding: 1rem;
-        }
-        .contact-open {
-          display: none;
-        }
-        .social-links {
-          grid-template-columns: 1fr;
-        }
-        .back-to-top {
-          right: 0.9rem;
-          bottom: 0.9rem;
-        }
-      }
-      @media (max-width: 1180px) {
-        .site-header {
-          padding-left: 1.25rem;
-          padding-right: 1.25rem;
-        }
-        .nav-links {
-          gap: 1.15rem;
-        }
-        .hire-btn {
-          margin-left: 1.4rem;
-        }
-        .home-grid {
-          width: min(100%, 1120px);
-          gap: clamp(2.2rem, 5vw, 4.5rem);
-        }
-        .photo-stage {
-          width: min(100%, 34rem);
-        }
-        .portrait-ring {
-          width: min(29rem, 80vw);
-        }
-      }
-      @media (max-width: 980px) {
         section[id] {
           scroll-margin-top: 4.5rem;
         }
-        .home,
-        .about,
-        .experience,
-        .skills,
-        .portfolio,
-        .contact,
-        .standalone-creative {
-          min-height: auto;
-          padding-top: 4.8rem;
-          padding-bottom: 4.8rem;
-        }
-        .standalone-creative {
-          padding-left: 1rem;
-          padding-right: 1rem;
-        }
-        .intro-content {
-          width: min(100% - 2rem, 42rem);
-        }
-        .intro-mark {
-          width: clamp(8.8rem, 28vw, 12rem);
-          height: clamp(8.8rem, 28vw, 12rem);
-        }
-        .intro-title {
-          font-size: clamp(3rem, 10vw, 4.8rem);
-        }
-        .intro-subtitle {
-          font-size: clamp(1rem, 3vw, 1.25rem);
-        }
-        .stats-row {
-          width: min(100%, 34rem);
-          text-align: center;
-        }
-        .skills-layout {
-          text-align: left;
-        }
-        .tools-list {
-          justify-content: center;
-        }
-        .feature-card {
-          text-align: left;
-        }
-        .timeline.show-all .extra-experience {
-          display: none;
-        }
-        .timeline-actions {
-          display: none;
-        }
-        .creative-carousel {
-          width: min(100%, 36rem);
-        }
-        .modal-card {
-          max-height: 86vh;
-        }
-        .contact {
-          padding-top: 4.2rem;
-        }
-        .contact .section-heading {
-          margin-bottom: 2rem;
-        }
-      }
-      @media (max-width: 760px) {
-        .portfolio-grid,
-        .video-grid {
-          grid-template-columns: 1fr;
-          width: min(100%, 28rem);
-        }
-        .video-card {
-          max-width: 24rem;
-          margin: 0 auto;
-          width: 100%;
-        }
-        .education-list {
-          width: min(100%, 34rem);
-        }
-        .education-card {
-          grid-template-columns: auto minmax(0, 1fr);
-          gap: 1rem;
-        }
-        .education-icon {
-          width: 3.4rem;
-          height: 3.4rem;
-        }
-        .education-body h3 {
-          font-size: 1.35rem;
-        }
-        .contact-form {
-          min-height: 0;
-        }
-        .form-field textarea {
-          min-height: 8rem;
-        }
-        .modal-card {
-          border-radius: 0.9rem;
-        }
-        .modal-visual {
-          min-height: 16rem;
-        }
-        .modal-body {
-          padding: 1.5rem;
-        }
-        .project-open,
-        .project-tag {
-          opacity: 1;
-          transform: none;
-        }
-      }
-      @media (max-width: 640px) {
         html {
-          scroll-padding-top: 4.2rem;
+          scroll-padding-top: 4.5rem;
         }
-        .site-header {
-          min-height: 4.2rem;
-          gap: 0.55rem;
+        .home {
+          padding-top: 5.5rem;
         }
-        .brand {
-          font-size: clamp(1.55rem, 7vw, 1.9rem);
-        }
-        .menu-toggle {
-          margin-left: auto;
-        }
-        .home,
         .about,
         .experience,
         .skills,
         .portfolio,
         .contact,
         .standalone-creative {
-          padding-left: 1rem;
-          padding-right: 1rem;
-          padding-top: 4.4rem;
-          padding-bottom: 4rem;
-        }
-        .intro-mark {
-          width: min(54vw, 10rem);
-          height: min(54vw, 10rem);
-          margin-bottom: 1.7rem;
-        }
-        .intro-mark::before {
-          inset: -0.45rem;
-        }
-        .intro-mark::after {
-          inset: 0.35rem;
-        }
-        .intro-photo {
-          width: calc(100% - 0.85rem);
-          height: calc(100% - 0.85rem);
-        }
-        .intro-photo img {
-          height: 154%;
-          bottom: -43%;
-        }
-        .intro-title {
-          font-size: clamp(2.55rem, 14vw, 3.5rem);
-        }
-        .intro-subtitle {
-          margin-top: 1.4rem;
-          font-size: 0.98rem;
-          line-height: 1.35;
-        }
-        .intro-bar {
-          margin-top: 1.35rem;
-          width: min(16rem, 68vw);
-        }
-        .intro-line {
-          margin-top: 1.5rem;
-        }
-        .intro-line::before,
-        .intro-line::after {
-          width: 3rem;
-        }
-        .home {
-          padding-top: 5.2rem;
-        }
-        .lead {
-          font-size: 1rem;
-          line-height: 1.55;
-        }
-        .stats-row {
-          gap: 0.8rem;
-          padding-top: 1.35rem;
-        }
-        .stat strong {
-          font-size: 1.7rem;
-        }
-        .stat span {
-          font-size: 0.92rem;
-        }
-        .photo-stage {
-          min-height: 22rem;
-        }
-        .float-card {
-          transform: scale(0.9);
-        }
-        .float-card.top {
-          right: -0.15rem;
-        }
-        .float-card.bottom {
-          left: -0.15rem;
-        }
-        .skill-top {
-          grid-template-columns: auto minmax(0, 1fr) auto;
-          gap: 0.6rem;
-        }
-        .skill-name {
-          font-size: 0.95rem;
-          line-height: 1.25;
-        }
-        .tool-chip {
-          font-size: 0.84rem;
-        }
-        .creative-work .section-heading,
-        .video-work .section-heading,
-        .education-work .section-heading {
-          margin-bottom: 2.2rem;
-        }
-        .creative-work .section-heading {
-          margin-bottom: 1.7rem;
-        }
-        .creative-work .section-heading h2 {
-          font-size: clamp(1.9rem, 9vw, 2.55rem);
-        }
-        .creative-stage {
-          border-radius: 0.45rem;
-        }
-        .creative-nav {
-          width: 2.35rem;
-          height: 2.35rem;
-        }
-        .creative-nav.prev {
-          left: 0.55rem;
-        }
-        .creative-nav.next {
-          right: 0.55rem;
-        }
-        .video-grid {
-          gap: 1.25rem;
-        }
-        .video-card {
-          max-width: min(100%, 21rem);
-        }
-        .education-card {
-          grid-template-columns: 1fr;
-          text-align: center;
-        }
-        .education-icon {
-          margin: 0 auto;
-        }
-        .education-meta {
-          justify-content: center;
-          flex-wrap: wrap;
-        }
-        .contact-value {
-          overflow-wrap: anywhere;
-        }
-        .social-links {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-        .social-link {
-          min-height: 2.8rem;
-        }
-        .back-to-top {
-          width: 2.2rem;
-          height: 2.2rem;
-        }
-      }
-      @media (max-width: 420px) {
-        .brand {
-          font-size: clamp(1.42rem, 7.2vw, 1.7rem);
-        }
-        .menu-toggle {
-          margin-left: auto;
-        }
-        .mobile-menu-panel {
-          width: min(82vw, 16.5rem);
-        }
-        .home h1 {
-          font-size: clamp(2.65rem, 15vw, 3.25rem);
-        }
-        .home-actions {
-          gap: 0.65rem;
-        }
-        .stats-row {
-          grid-template-columns: 1fr;
-          gap: 1.15rem;
-          text-align: center;
-        }
-        .info-row {
-          grid-template-columns: 1fr;
-        }
-        .timeline-item,
-        .timeline.show-all .extra-experience {
-          padding-left: 1.6rem;
-        }
-        .experience-card {
-          padding: 1rem;
-        }
-        .card-head {
-          grid-template-columns: 1fr;
-        }
-        .job-icon {
-          width: 2.85rem;
-          height: 2.85rem;
-        }
-        .toggle-btn {
-          min-width: 0;
-          width: 100%;
-          padding: 0 1.2rem;
-        }
-        .section-heading h1,
-        .section-heading h2 {
-          font-size: clamp(2.35rem, 13vw, 3.1rem);
-        }
-        .section-heading p {
-          font-size: 0.95rem;
-        }
-        .feature-card,
-        .project-body,
-        .connect-card,
-        .social-card,
-        .contact-form {
-          padding: 1rem;
-        }
-        .contact-info-card {
-          gap: 0.7rem;
-        }
-        .contact-icon {
-          width: 2.35rem;
-          height: 2.35rem;
-        }
-        .social-links {
-          grid-template-columns: 1fr;
-        }
-        .modal-close {
-          top: 0.65rem;
-          right: 0.65rem;
-        }
-        .modal-visual {
-          min-height: 13rem;
-        }
-        .intro-mark {
-          width: min(58vw, 9.2rem);
-          height: min(58vw, 9.2rem);
-        }
-      }
-      @media (max-width: 340px) {
-        .site-header {
-          padding-left: 0.7rem;
-          padding-right: 0.7rem;
-        }
-        .menu-toggle {
-          width: 2.45rem;
-          height: 2.45rem;
-          flex-basis: 2.45rem;
-        }
-        .mobile-menu-panel {
-          width: 86vw;
-        }
-      }
-      @media (max-height: 700px) {
-        .intro-mark {
-          width: 8.6rem;
-          height: 8.6rem;
-          margin-bottom: 1.3rem;
-        }
-        .intro-title {
-          font-size: clamp(2.6rem, 8vh, 4rem);
-        }
-        .intro-subtitle {
-          margin-top: 1.1rem;
-          font-size: 1rem;
-        }
-        .intro-bar {
-          margin-top: 1.15rem;
-        }
-        .intro-line {
-          margin-top: 1.25rem;
-        }
-      }
-      img,
-      video {
-        max-width: 100%;
-        height: auto;
-      }
-      main,
-      section,
-      .home-grid,
-      .about-grid,
-      .skills-layout,
-      .portfolio-grid,
-      .video-grid,
-      .contact-layout,
-      .timeline,
-      .creative-carousel,
-      .education-list {
-        max-width: 100%;
-        min-width: 0;
-      }
-      .home,
-      .about,
-      .experience,
-      .skills,
-      .portfolio,
-      .contact,
-      .standalone-creative {
-        overflow-x: clip;
-      }
-      .brand,
-      .pill,
-      .btn,
-      .hire-btn,
-      .toggle-btn,
-      .card-title,
-      .company,
-      .meta,
-      .description,
-      .tool-chip,
-      .project-body,
-      .education-body,
-      .contact-value,
-      .modal-body {
-        min-width: 0;
-        overflow-wrap: anywhere;
-      }
-      .pill {
-        max-width: 100%;
-        white-space: normal;
-      }
-      .home .pill span {
-        white-space: normal;
-      }
-      .btn,
-      .hire-btn,
-      .toggle-btn,
-      .send-btn {
-        text-align: center;
-      }
-      .project-card,
-      .experience-card,
-      .education-card,
-      .connect-card,
-      .contact-info-card,
-      .social-card,
-      .contact-form,
-      .modal-card {
-        max-width: 100%;
-      }
-      .project-placeholder,
-      .modal-visual {
-        background-size: cover;
-        background-position: center;
-      }
-      .video-placeholder video {
-        height: 100%;
-      }
-      @media (max-width: 1100px) {
-        .nav-links {
-          gap: 0.85rem;
-          font-size: 0.84rem;
-        }
-        .hire-btn {
-          margin-left: 1rem;
-          padding: 0 1.15rem;
-        }
-        .home-grid {
-          grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.85fr);
-        }
-        .contact-layout {
-          grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.9fr);
-        }
-      }
-      @media (max-width: 980px) {
-        .home-grid,
-        .about-grid,
-        .skills-layout,
-        .contact-layout {
-          justify-items: center;
-        }
-        .home-copy,
-        .about-copy,
-        .skills-layout > div,
-        .contact-stack,
-        .contact-form {
-          width: 100%;
-        }
-        .timeline.show-all .extra-experience {
-          display: block;
-        }
-        .timeline-actions {
-          display: grid;
-        }
-        .photo-stage,
-        .about-media {
-          width: min(100%, 34rem);
-        }
-      }
-      @media (max-width: 760px) {
-        .section-heading {
-          width: min(100%, 38rem);
-        }
-        .tools-list {
-          justify-content: flex-start;
-        }
-        .tool-chip {
-          max-width: 100%;
-          line-height: 1.25;
-        }
-        .feature-grid {
-          grid-template-columns: 1fr;
-        }
-        .portfolio-modal {
-          padding: 1rem 0.75rem;
-        }
-        .modal-card {
-          width: 100%;
-        }
-        .creative-work,
-        .video-work,
-        .education-work {
-          margin-top: 4rem;
-        }
-      }
-      @media (max-width: 640px) {
-        .home {
-          text-align: center;
-        }
-        .home .pill {
-          justify-content: center;
-          border-radius: 0.65rem;
-        }
-        .home-actions .btn {
-          min-height: 3.15rem;
-          padding: 0 1rem;
-        }
-        .photo-stage {
           min-height: auto;
-          padding: 1.4rem 0 1.8rem;
-        }
-        .portrait-ring {
-          width: min(100%, 21rem);
-        }
-        .portrait-ring::before {
-          inset: -0.45rem;
-        }
-        .float-card {
-          position: relative;
-          top: auto !important;
-          right: auto !important;
-          bottom: auto !important;
-          left: auto !important;
-          transform: none;
-          animation: none;
-          width: min(100%, 19rem);
-          margin: 0.75rem auto 0;
-          justify-content: flex-start;
-        }
-        .float-card strong,
-        .float-card span {
-          white-space: normal;
-        }
-        .about-media {
-          min-height: auto;
-          display: block;
-        }
-        .about-photo-card {
-          width: min(100%, 24rem);
-          min-height: 0;
-          aspect-ratio: 4/5;
-          margin: 0 auto;
-        }
-        .about-experience-card {
-          position: relative;
-          right: auto;
-          bottom: auto;
-          width: min(100%, 18rem);
-          margin: -2.25rem auto 0;
-          text-align: center;
-        }
-        .info-item {
-          text-align: left;
-        }
-        .meta {
-          flex-wrap: wrap;
-        }
-        .education-school {
-          font-size: 1rem;
-        }
-        .contact-info-card {
-          align-items: start;
-        }
-        .contact-form {
-          width: 100%;
-        }
-      }
-      @media (max-width: 420px) {
-        .mobile-menu-panel {
-          width: min(90vw, 17rem);
-        }
-        .home h1 {
-          font-size: clamp(2.35rem, 14vw, 3rem);
-          line-height: 1;
-        }
-        .section-heading h1,
-        .section-heading h2 {
-          font-size: clamp(2.1rem, 12vw, 2.75rem);
-        }
-        .lead,
-        .section-heading p,
-        .about-text,
-        .description,
-        .education-body p,
-        .modal-description {
-          font-size: 0.95rem;
-        }
-        .portrait-ring {
-          width: min(100%, 18.5rem);
-        }
-        .about-photo-card {
-          width: min(100%, 20rem);
-        }
-        .experience-card,
-        .education-card,
-        .project-body,
-        .connect-card,
-        .social-card,
-        .contact-form,
-        .modal-body {
-          padding: 0.95rem;
-        }
-        .timeline::before,
-        .timeline-dot {
-          left: 0.35rem;
-        }
-        .timeline-item,
-        .timeline.show-all .extra-experience {
-          padding-left: 1.25rem;
-        }
-        .skill-top {
-          grid-template-columns: auto minmax(0, 1fr);
-          align-items: start;
-        }
-        .skill-percent {
-          grid-column: 2;
-        }
-        .creative-nav {
-          width: 2.15rem;
-          height: 2.15rem;
-        }
-        .creative-nav.prev {
-          left: 0.35rem;
-        }
-        .creative-nav.next {
-          right: 0.35rem;
-        }
-        .contact-info-card {
-          grid-template-columns: 1fr;
-          text-align: center;
-        }
-        .contact-icon {
-          margin: 0 auto;
-        }
-        .contact-note,
-        .contact-eyebrow {
-          text-align: center;
-        }
-        .send-btn {
-          width: 100%;
-        }
-      }
-      @media (max-width: 340px) {
-        .home,
-        .about,
-        .experience,
-        .skills,
-        .portfolio,
-        .contact,
-        .standalone-creative {
-          padding-left: 0.75rem;
-          padding-right: 0.75rem;
-        }
-        .brand {
-          font-size: 1.35rem;
-        }
-        .home h1 {
-          font-size: 2.2rem;
-        }
-        .intro-subtitle {
-          max-width: 16rem;
-        }
-        .btn,
-        .toggle-btn {
-          font-size: 0.9rem;
-        }
-        .stat strong {
-          font-size: 1.5rem;
-        }
-        .float-card {
-          padding: 0.6rem;
-        }
-        .float-card .icon {
-          flex-basis: 2.1rem;
-          height: 2.1rem;
-        }
-        .contact-form,
-        .connect-card,
-        .social-card,
-        .experience-card,
-        .education-card {
-          padding: 0.85rem;
-        }
-      }
-      
-      /* Final responsive pass */
-      html {
-        width: 100%;
-        overflow-x: hidden;
-      }
-      body {
-        width: 100%;
-        max-width: 100vw;
-      }
-      main {
-        width: 100%;
-        overflow: hidden;
-      }
-      .home,
-      .about,
-      .experience,
-      .skills,
-      .portfolio,
-      .contact,
-      .standalone-creative {
-        padding-left: clamp(1rem, 4vw, 2rem);
-        padding-right: clamp(1rem, 4vw, 2rem);
-      }
-      .section-heading,
-      .about-heading,
-      .home-copy,
-      .about-copy,
-      .skills-layout > *,
-      .contact-stack,
-      .contact-form {
-        min-width: 0;
-      }
-      .home-grid,
-      .about-grid,
-      .skills-layout,
-      .contact-layout {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .portfolio-grid {
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
-      }
-      .video-grid {
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
-      }
-      .feature-grid {
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
-      }
-      .project-placeholder {
-        aspect-ratio: 16/10;
-        min-height: 0;
-      }
-      .video-placeholder {
-        height: auto;
-      }
-      .creative-carousel,
-      .education-list,
-      .portfolio-grid,
-      .video-grid,
-      .contact-layout,
-      .skills-layout,
-      .timeline {
-        width: min(100%, var(--content-width, 1160px));
-      }
-      .creative-slide {
-        min-width: 100%;
-      }
-      .contact-value,
-      .info-value,
-      .education-school,
-      .project-tools span,
-      .modal-tools span {
-        overflow-wrap: anywhere;
-      }
-      .form-field input,
-      .form-field textarea {
-        min-width: 0;
-      }
-      
-      @media (min-width: 981px) and (max-width: 1180px) {
-        .site-header {
+          padding-top: 0.6rem;
+          padding-bottom: 4.5rem;
           padding-left: 1.25rem;
           padding-right: 1.25rem;
         }
-        .nav-links {
-          gap: 0.8rem;
-          font-size: 0.82rem;
-        }
-        .hire-btn {
-          margin-left: 0.9rem;
-          padding: 0 1rem;
-        }
         .home-grid {
-          grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.8fr);
-          gap: 2.5rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0;
+          text-align: center;
+          width: min(100%, 42rem);
+          margin: 0 auto;
         }
-        .about-grid {
-          grid-template-columns: minmax(17rem, 0.8fr) minmax(0, 1fr);
-          gap: 2.5rem;
+        .home-copy {
+          display: contents;
         }
-        .contact-layout {
-          grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.9fr);
+        .home .pill {
+          order: 1;
+          margin-bottom: 1rem;
         }
         .photo-stage {
-          min-height: 30rem;
+          order: 2;
+          width: min(100%, 24rem);
+          min-height: 24rem;
+          margin: 0.5rem auto 1.5rem;
         }
-        .portrait-ring {
-          width: min(100%, 27rem);
+        .home h1 {
+          order: 3;
+          font-size: clamp(2.2rem, 8vw, 3.5rem);
+          margin-bottom: 0.85rem;
         }
-        .about-media {
-          min-height: 34rem;
+        .home .lead {
+          order: 4;
+          font-size: clamp(0.95rem, 2.8vw, 1.15rem);
+          margin-bottom: 1.5rem;
+          max-width: 32rem;
         }
-        .about-photo-card {
-          width: min(100%, 30rem);
-          min-height: 33rem;
+        .home-actions {
+          order: 5;
+          width: 100%;
+          max-width: 24rem;
+          margin: 0 auto 2rem;
+          justify-content: center;
         }
-      }
-      
-      @media (max-width: 980px) {
-        .home-grid,
+        .stats-row {
+          order: 6;
+          width: 100%;
+          max-width: 32rem;
+          margin: 0 auto;
+        }
         .about-grid,
         .skills-layout,
         .contact-layout {
           grid-template-columns: 1fr;
-          gap: 2.5rem;
+          gap: 3rem;
+          text-align: center;
         }
-        .home-copy,
         .about-copy,
         .skills-layout > *,
         .contact-stack,
@@ -3385,41 +2510,43 @@
           margin-left: auto;
           margin-right: auto;
         }
+        .about-text,
+        .info-row {
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .scroll-cue {
+          display: none;
+        }
+        .about-media {
+          order: -1;
+          width: min(100%, 30rem);
+          min-height: 32rem;
+          margin: 0 auto;
+          padding-top: 0;
+        }
         .about-copy,
         .skills-layout,
         .contact-layout {
           text-align: left;
         }
-        .home-copy {
-          text-align: center;
-        }
-        .home-actions {
-          justify-content: center;
-        }
-        .photo-stage,
-        .about-media {
-          order: -1;
-          width: min(100%, 32rem);
-          margin-left: auto;
-          margin-right: auto;
-        }
-        .skills-layout {
-          justify-items: center;
-        }
-        .tools-list {
-          justify-content: flex-start;
-        }
         .timeline {
-          width: min(100%, 42rem);
+          width: min(100%, 44rem);
         }
         .timeline::before,
         .timeline-dot {
-          left: 0.5rem;
+          left: 0.55rem;
         }
-        .timeline-item,
+        .timeline-item {
+          display: block;
+          padding-left: 2.2rem;
+          margin-bottom: 2rem;
+        }
+        .timeline .extra-experience {
+          display: none;
+        }
         .timeline.show-all .extra-experience {
           display: block;
-          padding-left: 2rem;
         }
         .timeline-item:nth-child(even) .experience-card {
           grid-column: auto;
@@ -3431,76 +2558,259 @@
         .timeline-item:nth-child(odd) .meta {
           justify-content: flex-start;
         }
-        .portfolio-grid,
-        .video-grid {
-          width: min(100%, 42rem);
+        .portfolio-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          width: min(100%, 46rem);
         }
+        .video-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          width: min(100%, 46rem);
+        }
+        .creative-carousel {
+          width: min(100%, 36rem);
+        }
+        .education-list {
+          width: min(100%, 44rem);
+        }
+        .contact-stack,
         .contact-form {
           align-self: auto;
         }
-      }
-      
-      @media (max-width: 760px) {
-        .home,
+        .connect-card,
+        .contact-info-card {
+          text-align: left;
+        }
+      @media (max-width: 768px) {
+        section[id] {
+          scroll-margin-top: 4.5rem;
+        }
+        html {
+          scroll-padding-top: 4.5rem;
+        }
+        .home {
+          padding-top: 4.8rem;
+        }
         .about,
         .experience,
         .skills,
         .portfolio,
         .contact,
         .standalone-creative {
-          padding-top: 4.35rem;
-          padding-bottom: 4rem;
+          padding-top: 0.6rem;
+          padding-bottom: 3.8rem;
+          padding-left: 1rem;
+          padding-right: 1rem;
         }
-        .section-heading {
-          margin-bottom: 2.35rem;
+        .home .pill {
+          margin-bottom: 1.25rem;
         }
         .home h1 {
-          font-size: clamp(2.55rem, 14vw, 3.65rem);
+          font-size: clamp(2.75rem, 11vw, 4.2rem);
+          margin-bottom: 1.25rem;
         }
         .lead {
-          font-size: 1rem;
+          font-size: clamp(1rem, 2.8vw, 1.18rem);
+          line-height: 1.6;
+          margin-bottom: 1.6rem;
         }
         .home-actions {
           flex-direction: column;
           align-items: stretch;
+          gap: 0.75rem;
+          margin-bottom: 2rem;
         }
         .btn {
           width: 100%;
-          padding-left: 1rem;
-          padding-right: 1rem;
+          min-height: 3.1rem;
         }
-        .stats-row,
-        .info-row {
-          grid-template-columns: 1fr;
-          width: min(100%, 24rem);
+        .stats-row {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 0.75rem;
+          padding-top: 1.5rem;
         }
-        .stat {
-          text-align: center;
+        .stat strong {
+          font-size: 1.7rem;
+        }
+        .stat span {
+          font-size: 0.85rem;
         }
         .photo-stage {
-          min-height: auto;
-          padding: 1rem 0;
+          width: min(100%, 25rem);
+          min-height: 25rem;
         }
         .portrait-ring {
-          width: min(100%, 21rem);
-        }
-        .portrait-window {
-          width: calc(100% - 1.55rem);
+          width: min(21rem, 76vw);
         }
         .float-card {
-          position: relative;
-          inset: auto !important;
-          transform: none !important;
-          animation: none;
-          width: min(100%, 19rem);
-          margin: 0.75rem auto 0;
+          padding: 0.65rem 0.85rem;
+          min-width: 8.5rem;
+        }
+        .float-card strong {
+          font-size: 0.85rem;
+        }
+        .float-card span {
+          font-size: 0.74rem;
         }
         .about-media {
+          width: min(100%, 25rem);
+          min-height: 27rem;
+        }
+        .about-photo-card {
+          width: min(22rem, 84vw);
+          min-height: 25rem;
+        }
+        .about-experience-card {
+          padding: 0.85rem 1rem;
+          min-width: 9rem;
+        }
+        .portfolio-grid,
+        .video-grid {
+          grid-template-columns: 1fr;
+          width: min(100%, 26rem);
+          margin: 0 auto;
+        }
+        .video-card {
+          max-width: 22rem;
+          margin: 0 auto;
+          width: 100%;
+        }
+        .education-list {
+          width: min(100%, 32rem);
+        }
+        .education-card {
+          grid-template-columns: auto minmax(0, 1fr);
+          gap: 1.15rem;
+          padding: 1.35rem;
+        }
+        .education-icon {
+          width: 3.3rem;
+          height: 3.3rem;
+        }
+        .education-body h3 {
+          font-size: 1.3rem;
+        }
+        .contact-form {
+          padding: 1.5rem 1.25rem;
+        }
+        .modal-card {
+          border-radius: 1rem;
+          max-height: 88vh;
+        }
+        .modal-visual {
+          min-height: 15rem;
+        }
+        .modal-body {
+          padding: 1.5rem 1.25rem;
+        }
+        .modal-body h3 {
+          font-size: 1.85rem;
+        }
+        .creative-carousel {
+          width: min(100%, 28rem);
+        }
+      }
+
+      @media (max-width: 576px) {
+        section[id] {
+          scroll-margin-top: 4.5rem;
+        }
+        html {
+          scroll-padding-top: 4.5rem;
+        }
+        .home {
+          padding-top: 4.5rem;
+        }
+        .about,
+        .experience,
+        .skills,
+        .portfolio,
+        .contact,
+        .standalone-creative {
+          padding-top: 0.6rem;
+          padding-bottom: 3.2rem;
+          padding-left: 0.85rem;
+          padding-right: 0.85rem;
+        }
+        .home .pill {
+          width: auto;
+          max-width: max-content;
+          margin-left: auto;
+          margin-right: auto;
+          justify-content: center;
+          border-radius: 999px;
+          font-size: 0.85rem;
+        }
+        .home h1 {
+          font-size: clamp(2.2rem, 11vw, 3.2rem);
+        }
+        .lead {
+          font-size: 0.96rem;
+        }
+        .stats-row {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0.5rem;
+          text-align: center;
+          width: 100%;
+          padding-top: 1rem;
+        }
+        .stat strong {
+          font-size: clamp(1.25rem, 5.5vw, 1.65rem);
+        }
+        .stat span {
+          font-size: clamp(0.68rem, 2.7vw, 0.82rem);
+          line-height: 1.25;
+        }
+        .photo-stage {
+          position: relative;
+          width: min(100%, 22rem);
+          min-height: 22rem;
+          margin: 0.5rem auto 1.25rem;
+          display: grid;
+          place-items: center;
+          padding: 0;
+        }
+        .portrait-ring {
+          width: min(17rem, 70vw);
+        }
+        .float-card {
+          position: absolute !important;
+          inset: auto !important;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          gap: 0.45rem;
+          min-width: 0;
+          padding: 0.5rem 0.7rem;
+          border-radius: 0.45rem;
+          background: rgba(255, 255, 255, 0.94);
+          box-shadow: 0 12px 24px rgba(16, 25, 42, 0.12);
+        }
+        .float-card.top {
+          top: 20% !important;
+          right: 0 !important;
+        }
+        .float-card.bottom {
+          left: 0 !important;
+          bottom: 18% !important;
+        }
+        .float-card .icon {
+          flex: 0 0 1.95rem;
+          height: 1.95rem;
+          border-radius: 0.35rem;
+        }
+        .float-card strong {
+          font-size: 0.76rem;
+        }
+        .float-card span {
+          font-size: 0.68rem;
+        }
+        .about-media {
+          width: 100%;
           min-height: auto;
           display: block;
         }
         .about-photo-card {
-          width: min(100%, 24rem);
+          width: min(100%, 22rem);
           min-height: 0;
           aspect-ratio: 4/5;
           margin: 0 auto;
@@ -3510,17 +2820,43 @@
           position: relative;
           right: auto;
           bottom: auto;
-          width: min(100%, 18rem);
-          margin: -2rem auto 0;
+          width: min(100%, 17.5rem);
+          margin: -2.2rem auto 0;
           text-align: center;
         }
-        .portfolio-grid,
-        .video-grid {
+        .info-row {
           grid-template-columns: 1fr;
-          width: min(100%, 28rem);
+          width: 100%;
         }
-        .creative-carousel {
-          width: min(100%, 28rem);
+        .info-item {
+          text-align: left;
+        }
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+        .timeline::before,
+        .timeline-dot {
+          left: 0.35rem;
+        }
+        .timeline-item {
+          padding-left: 1.35rem;
+        }
+        .experience-card,
+        .education-card,
+        .connect-card,
+        .social-card,
+        .contact-form,
+        .feature-card,
+        .project-body {
+          padding: 1.1rem 1rem;
+        }
+        .card-head {
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
+        }
+        .job-icon {
+          width: 2.75rem;
+          height: 2.75rem;
         }
         .education-card {
           grid-template-columns: 1fr;
@@ -3533,28 +2869,59 @@
           justify-content: center;
           flex-wrap: wrap;
         }
+        .creative-carousel,
+        .portfolio-grid,
+        .video-grid {
+          width: 100%;
+        }
+        .creative-nav {
+          width: 2.25rem;
+          height: 2.25rem;
+        }
+        .creative-nav.prev {
+          left: 0.4rem;
+        }
+        .creative-nav.next {
+          right: 0.4rem;
+        }
+        .social-links {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 0.5rem;
+        }
+        .social-link {
+          min-height: 2.65rem;
+        }
         .contact-info-card {
           grid-template-columns: auto minmax(0, 1fr);
-          align-items: start;
+          padding: 0.85rem;
         }
         .contact-open {
           display: none;
         }
+        .modal-card {
+          max-height: 90vh;
+        }
+        .modal-visual {
+          min-height: 12rem;
+        }
+        .modal-close {
+          top: 0.65rem;
+          right: 0.65rem;
+          width: 2.35rem;
+          height: 2.35rem;
+        }
       }
-      
-      @media (max-width: 480px) {
+
+      @media (max-width: 400px) {
         .site-header {
-          min-height: 4.05rem;
-          padding-left: 0.85rem;
-          padding-right: 0.85rem;
+          padding-left: 0.65rem;
+          padding-right: 0.65rem;
         }
         .brand {
-          font-size: clamp(1.35rem, 7vw, 1.65rem);
+          font-size: clamp(1.25rem, 6.5vw, 1.5rem);
         }
-        .menu-toggle {
-          width: 2.4rem;
-          height: 2.4rem;
-          flex-basis: 2.4rem;
+        .mobile-menu-panel {
+          width: min(88vw, 16.5rem);
         }
         .home,
         .about,
@@ -3563,18 +2930,37 @@
         .portfolio,
         .contact,
         .standalone-creative {
-          padding-left: 0.85rem;
-          padding-right: 0.85rem;
+          padding-left: 0.65rem;
+          padding-right: 0.65rem;
         }
-        .home .pill {
-          width: 100%;
-          justify-content: center;
-          border-radius: 0.6rem;
+        .home h1 {
+          font-size: clamp(2.1rem, 13vw, 2.8rem);
         }
         .section-heading h1,
         .section-heading h2,
         .about h1 {
-          line-height: 1.05;
+          font-size: clamp(2rem, 11vw, 2.5rem);
+          font-weight: 500;
+        }
+        .photo-stage {
+          width: min(100%, 19rem);
+          min-height: 19rem;
+        }
+        .portrait-ring {
+          width: min(14rem, 66vw);
+        }
+        .float-card {
+          padding: 0.42rem 0.6rem;
+          gap: 0.35rem;
+        }
+        .float-card strong {
+          font-size: 0.7rem;
+        }
+        .float-card span {
+          font-size: 0.62rem;
+        }
+        .about-photo-card {
+          width: min(100%, 17.5rem);
         }
         .skill-top {
           grid-template-columns: auto minmax(0, 1fr);
@@ -3583,111 +2969,76 @@
         .skill-percent {
           grid-column: 2;
         }
-        .tool-chip {
-          width: 100%;
-          justify-content: flex-start;
-        }
-        .experience-card,
-        .feature-card,
-        .project-body,
-        .education-card,
-        .connect-card,
-        .social-card,
-        .contact-form,
-        .modal-body {
-          padding: 0.95rem;
-        }
-        .card-head {
-          grid-template-columns: 1fr;
-        }
-        .job-icon {
-          width: 2.75rem;
-          height: 2.75rem;
-        }
-        .timeline::before,
-        .timeline-dot {
-          left: 0.3rem;
-        }
-        .timeline-item,
-        .timeline.show-all .extra-experience {
-          padding-left: 1.1rem;
-        }
-        .project-placeholder {
-          aspect-ratio: 4/3;
-        }
-        .creative-nav {
-          width: 2.05rem;
-          height: 2.05rem;
-        }
-        .creative-nav.prev {
-          left: 0.35rem;
-        }
-        .creative-nav.next {
-          right: 0.35rem;
-        }
-        .modal-card {
-          width: 100%;
-          max-height: 88vh;
-          border-radius: 0.8rem;
-        }
-        .modal-visual {
-          min-height: 12rem;
-          border-radius: 0.8rem 0.8rem 0 0;
+        .social-links {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 0.5rem;
         }
         .contact-info-card {
-          grid-template-columns: 1fr;
-          text-align: center;
+          grid-template-columns: auto minmax(0, 1fr) auto;
+          text-align: left;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.85rem 0.9rem;
         }
         .contact-icon {
-          margin: 0 auto;
+          margin: 0;
+          width: 2.6rem;
+          height: 2.6rem;
         }
         .contact-eyebrow,
         .contact-note {
-          text-align: center;
+          text-align: left;
         }
-        .social-links {
-          grid-template-columns: 1fr;
+        .contact-value {
+          word-break: break-word;
+          font-size: 0.85rem;
         }
-        .send-btn {
-          width: 100%;
+        .contact-form {
+          padding: 1.2rem 1rem;
+          border-radius: 1rem;
+        }
+        .back-to-top {
+          right: 0.75rem;
+          bottom: 0.75rem;
+          width: 2.25rem;
+          height: 2.25rem;
         }
       }
-      
-      @media (max-width: 360px) {
+
+      @media (max-height: 680px) and (orientation: landscape) {
+        .site-header {
+          min-height: 3.8rem;
+        }
         .home,
         .about,
         .experience,
         .skills,
         .portfolio,
-        .contact,
-        .standalone-creative {
-          padding-left: 0.7rem;
-          padding-right: 0.7rem;
+        .contact {
+          padding-top: 4.2rem;
+          padding-bottom: 3rem;
         }
-        .home h1 {
-          font-size: 2.2rem;
+        .photo-stage,
+        .about-media {
+          min-height: auto;
         }
-        .section-heading h1,
-        .section-heading h2,
-        .about h1 {
-          font-size: 2.05rem;
+        .intro-mark {
+          width: 7.5rem;
+          height: 7.5rem;
+          margin-bottom: 1rem;
         }
-        .lead,
-        .about-text,
-        .section-heading p,
-        .description,
-        .project-body p,
-        .education-body p {
-          font-size: 0.92rem;
+        .intro-title {
+          font-size: 2.4rem;
         }
-        .portrait-ring {
-          width: min(100%, 17.5rem);
+        .intro-subtitle {
+          margin-top: 0.8rem;
+          font-size: 0.95rem;
         }
-        .about-photo-card {
-          width: min(100%, 18.5rem);
+        .intro-bar {
+          margin-top: 0.9rem;
         }
-        .mobile-menu-panel {
-          width: 90vw;
+        .intro-line {
+          margin-top: 1rem;
         }
       }
     </style>
@@ -3873,9 +3224,6 @@
         </div>
       </section>
       <section class="about" id="about">
-        <div class="about-heading">
-          <div class="pill">About Me</div>
-        </div>
         <div class="about-grid">
           <div class="about-media">
             <div class="about-photo-card">
@@ -3888,6 +3236,7 @@
           </div>
 
           <div class="about-copy">
+            <div class="pill">About Me</div>
             <h1>Passionate About Helping Businesses Thrive</h1>
             <div class="about-text">
               <p>
@@ -3909,11 +3258,9 @@
             <div class="info-row">
               <div class="info-item">
                 <span class="info-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" role="img">
-                    <path
-                      d="M12 21s6-5.33 6-11a6 6 0 0 0-12 0c0 5.67 6 11 6 11Z"
-                    ></path>
-                    <circle cx="12" cy="10" r="2.4"></circle>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
                   </svg>
                 </span>
                 <div>
@@ -3923,13 +3270,9 @@
               </div>
               <div class="info-item">
                 <span class="info-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" role="img">
-                    <path d="m14.7 6.3 3 3"></path>
-                    <path d="M9 15 4.5 19.5"></path>
-                    <path d="m5.5 18.5 3 3"></path>
-                    <path d="M15.8 5.2 18.8 2.2l3 3-3 3"></path>
-                    <path d="m3 8 4-4 3 3-4 4H3Z"></path>
-                    <path d="m8.5 9.5 6 6"></path>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path>
+                    <path d="m9 12 2 2 4-4"></path>
                   </svg>
                 </span>
                 <div>
@@ -5713,7 +5056,8 @@
         window.scrollTo(0, 0);
         window.setTimeout(() => {
           introLoader?.classList.add("hide");
-        }, 3350);
+          document.body.classList.add("loaded");
+        }, 2000);
       });
 
       revealTargets.forEach((target, index) => {
