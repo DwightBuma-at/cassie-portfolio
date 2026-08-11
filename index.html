@@ -1806,13 +1806,14 @@
       .portfolio-modal {
         position: fixed;
         inset: 0;
-        z-index: 20;
+        z-index: 20000;
         display: none;
         align-items: center;
         justify-content: center;
         padding: 2rem 1rem;
-        background: rgba(0, 0, 0, 0.66);
-        backdrop-filter: blur(6px);
+        background: rgba(0, 0, 0, 0.72);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
       }
       .portfolio-modal.open {
         display: flex;
@@ -3004,6 +3005,27 @@
         .contact-form {
           padding: 1.2rem 1rem;
           border-radius: 1rem;
+        }
+        .portfolio-modal {
+          padding: 1rem 0.6rem;
+        }
+        .modal-card {
+          width: 100%;
+          max-height: 85vh;
+          border-radius: 1rem;
+        }
+        .modal-close {
+          top: 0.75rem;
+          right: 0.75rem;
+          width: 2.25rem;
+          height: 2.25rem;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+        .modal-body {
+          padding: 1.15rem 1rem;
+        }
+        .modal-body h3 {
+          font-size: 1.45rem;
         }
         .back-to-top {
           right: 0.75rem;
