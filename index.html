@@ -195,7 +195,7 @@
       .mobile-menu {
         position: fixed;
         inset: 0;
-        z-index: 30;
+        z-index: 10001;
         visibility: hidden;
         pointer-events: none;
       }
@@ -206,7 +206,7 @@
       .mobile-menu-backdrop {
         position: absolute;
         inset: 0;
-        background: rgba(16, 25, 42, 0.28);
+        background: rgba(16, 25, 42, 0.35);
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);
         opacity: 0;
@@ -220,8 +220,10 @@
         top: 0;
         left: 0;
         right: 0;
-        width: 100%;
-        margin: 0;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
         height: auto;
         padding: 1.1rem 1.25rem 1.35rem;
         border-radius: 0 0 1.5rem 1.5rem;
@@ -247,6 +249,8 @@
         margin-bottom: 0.65rem;
         padding-bottom: 0.5rem;
         border-bottom: 1px solid rgba(16, 25, 42, 0.07);
+        width: 100%;
+        box-sizing: border-box;
       }
       .mobile-menu-title {
         font-family: "Cormorant Garamond", Georgia, serif;
@@ -276,21 +280,25 @@
         height: 1rem !important;
       }
       .mobile-nav {
-        display: grid;
-        gap: 0.25rem;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 0.35rem;
       }
       .mobile-nav a {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        min-height: 2.45rem;
-        padding: 0 0.9rem;
-        border-radius: 0.6rem;
+        justify-content: flex-start;
+        width: 100%;
+        box-sizing: border-box;
+        min-height: 2.65rem;
+        padding: 0 1.1rem;
+        border-radius: 0.65rem;
         color: #344052;
         text-decoration: none;
-        font-size: 0.9rem;
+        font-size: 0.92rem;
         font-weight: 700;
-        background: rgba(248, 250, 249, 0.8);
+        background: rgba(248, 250, 249, 0.85);
         transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
       }
       .mobile-nav a:hover,
